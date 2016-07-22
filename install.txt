@@ -1,0 +1,13 @@
+- Download Node.js http://nodejs.org
+
+- Open cmd
+
+- npm install -g typescript
+
+- npm install -g typings
+
+- cd to directory
+
+- npm install
+
+- if getting errors, change 'es5' to 'es6' in app.component.ts
