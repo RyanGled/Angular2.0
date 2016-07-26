@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses.component', "./authors.component"], function(exports_1, context_1) {
+System.register(['angular2/core', './courses.component', "./authors.component", "./favourite.component", "./like.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './courses.component', "./authors.component"],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1, authors_component_1;
+    var core_1, courses_component_1, authors_component_1, favourite_component_1, like_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,19 +22,58 @@ System.register(['angular2/core', './courses.component', "./authors.component"],
             },
             function (authors_component_1_1) {
                 authors_component_1 = authors_component_1_1;
+            },
+            function (favourite_component_1_1) {
+                favourite_component_1 = favourite_component_1_1;
+            },
+            function (like_component_1_1) {
+                like_component_1 = like_component_1_1;
             }],
         execute: function() {
             let AppComponent = class AppComponent {
+                constructor() {
+                    this.title = "Angular App";
+                    this.imageUrl = "http://lorempixel.com/400/200";
+                    this.isActive = true;
+                    this.post = {
+                        title: 'Post Title',
+                        isFavourite: true,
+                        isLiked: false
+                    };
+                }
+                onDivClick() {
+                    console.log('div click');
+                }
+                onClick($event) {
+                    // $event.stopPropagation();
+                    console.log('clicked button', $event);
+                }
+                onFavouriteChange($event) {
+                    console.log($event);
+                }
             };
             AppComponent = __decorate([
                 core_1.Component({
                     selector: 'my-app',
                     template: `
-        <h1>Hello Angular</h1>
+        <h1>{{ title }}</h1>
         <courses></courses>
         <authors></authors>
+        
+        <img bind-src="imageUrl" />
+        
+        <div (click)="onDivClick()">
+            <button class="btn btn-primary" 
+            [class.active]="isActive" [style.backgroundColor]="isActive ? 'blue' : 'gray'"
+            (click)="onClick($event)">
+                Submit
+            </button>
+        </div>
+        
+        <favourites [isFavourite]="post.isFavourite" (change)="onFavouriteChange($event)"></favourites>
+        <likes [isLiked]="post.isLiked"></likes>
     `,
-                    directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent]
+                    directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, favourite_component_1.FavouriteComponent, like_component_1.LikeComponent]
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppComponent);

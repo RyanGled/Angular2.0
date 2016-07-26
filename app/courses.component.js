@@ -36,7 +36,13 @@ System.register(['angular2/core', "./course.service", "./auto-grow.directive"], 
                     template: `
         <h2>Courses</h2>
         {{ title }}
-        <input type="text" autoGrow />
+        
+        <!-- both below inputs are utilising binding between the model and the DOM -->
+        <input type="text" autoGrow [value]="title" (input)="title = $event.target.value" />
+        <!--<input type="text" [(ngModel)]="title" />-->
+        Preview: {{ title }}
+        <input type="button" (click)="title = ''" value="Clear Input" />
+        
         <ul>
             <li *ngFor="#course of courses">
                 {{ course }}
