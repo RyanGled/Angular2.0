@@ -4,31 +4,34 @@ import {AuthorsComponent} from "./authors.component";
 import {FavouriteComponent} from "./favourite.component";
 import {LikeComponent} from "./like.component";
 import {VoteComponent} from "./vote.component";
+import {TweetComponent} from "./tweet.component";
 
 @Component({
     selector: 'my-app',
     template: `
-        <h1>{{ title }}</h1>
-        <courses></courses>
-        <authors></authors>
-        <img bind-src="imageUrl" />
-        
-        <div (click)="onDivClick()">
-            <button class="btn btn-primary" 
-            [class.active]="isActive" [style.backgroundColor]="isActive ? 'blue' : 'gray'"
-            (click)="onClick($event)">
-                Submit
-            </button>
-        </div>
-        
-        <favourites [isFavourite]="post.isFavourite" (change)="onFavouriteChange($event)"></favourites>
-        <likes [isLiked]="post.isLiked"></likes>
-        <votes
-            [voteCount]="post.voteCount"
-            [myVote]="post.myVote"
-            (vote)="onVote($event)"></votes>
+        <!--<h1>{{ title }}</h1>-->
+        <!--<courses></courses>-->
+        <!--<authors></authors>-->
+        <!--<img bind-src="imageUrl" />-->
+        <!---->
+        <!--<div (click)="onDivClick()">-->
+            <!--<button class="btn btn-primary" -->
+            <!--[class.active]="isActive" [style.backgroundColor]="isActive ? 'blue' : 'gray'"-->
+            <!--(click)="onClick($event)">-->
+                <!--Submit-->
+            <!--</button>-->
+        <!--</div>-->
+        <!---->
+        <!--<favourites [isFavourite]="post.isFavourite" (change)="onFavouriteChange($event)"></favourites>-->
+        <!--<likes [isLiked]="post.isLiked"></likes>-->
+        <!--<votes-->
+            <!--[voteCount]="post.voteCount"-->
+            <!--[myVote]="post.myVote"-->
+            <!--(vote)="onVote($event)"></votes>-->
+            
+        <tweet></tweet>
     `,
-    directives: [CoursesComponent,AuthorsComponent,FavouriteComponent,LikeComponent,VoteComponent]
+    directives: [CoursesComponent,AuthorsComponent,FavouriteComponent,LikeComponent,VoteComponent,TweetComponent]
 })
 export class AppComponent {
     title = "Angular App";
